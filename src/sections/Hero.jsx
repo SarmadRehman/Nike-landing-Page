@@ -3,7 +3,9 @@ import Button from "../components/Button";
 import { shoes, statistics } from "../constants";
 import { bigShoe1 } from "../assets/images";
 import ShoeCard from "../components/ShoeCard";
+import { useState } from "react";
 const Hero = () => {
+  const [bigShoeImg, setBigShoeImg] = useState(bigShoe1);
   return (
     <section
       id="home "
@@ -26,13 +28,14 @@ const Hero = () => {
           your active life.
         </p>
         {/* button and stats */}
+
         <Button label="Show now" iconURL={arrowRight} />
-        <div className="flex flex-wrap items-start justify-start w-full gap-16 mt-20">
+        <div className="flex flex-wrap items-starts justify-start w-full gap-16 mt-20">
           {statistics.map((stat) => (
             <div key={stat.label}>
-              <p className="text-4xl font-bold font-palanquin">{stat.label}</p>
-              <p className="leading-7 font-montserrat text-slate-gray">
-                {stat.value}
+              <p className="text-4xl font-bold font-palanquin">{stat.value}</p>
+              <p className="leading-7 font-montserrat text-slate-gray ">
+                {stat.label}
               </p>
             </div>
           ))}
@@ -40,19 +43,22 @@ const Hero = () => {
       </div>
       <div className="relative flex items-center justify-center flex-1 bg-center bg-cover xl:min-h-screen max-xl:py-40 bg-primary bg-hero">
         <img
-          src={bigShoe1}
+          src={bigShoeImg}
           alt="shoe collection"
           width={610}
           height={500}
           className="relative z-10 object-contain"
         />
-        <div>
+        {/* Shoe-card rendered  */}
+        <div className="flex sm:gap-6 gap-4 absolute -bottom-[5%] sm:left-[10%] max-sm:px-6">
           {shoes.map((shoe) => (
-            <div>
+            <div key={shoe}>
               <ShoeCard
                 imageURL={shoe}
-                changeBigShoeImage={() => {}}
-                BigShoeImage=""
+                changeBigShoeImage={(shoe) => {
+                  setBigShoeImg(shoe);
+                }}
+                BigShoeImage={bigShoeImg}
               />
             </div>
           ))}
