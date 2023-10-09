@@ -9,7 +9,7 @@ import {
   CustomerReviews,
   Navbar,
 } from "./sections";
-
+// all the basis for the UI of the page
 const App = () => (
   <main className="relative">
     <Navbar />
