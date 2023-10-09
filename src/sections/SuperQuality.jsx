@@ -32,7 +32,7 @@ const SuperQuality = () => {
           height={522}
           width={570}
           className="object-contain "
-        ></img>
+        />
       </div>
     </section>
   );
